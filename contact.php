@@ -1,13 +1,23 @@
 <?php
 
 
-     if 
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $user = $_POST ['name'];
+        $mail = $_POST ['email'];
+        $sub = $_POST ['subject'];
+        $msg = $_POST ['message'];
+
+        $headers = 'From: ' . $mail . '\r\n';
+        $myEmail = 'looma1890@gmail.com' ;
+        $subject = 'Contact Form' ;
+
+        mail($myEmail, $subject ,$msg ,$headers);
 
 
 
+     }
 ?>
-
-
 
 
 

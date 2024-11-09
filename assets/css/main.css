@@ -1589,9 +1589,9 @@ code {
   
 }
 .portfolio-description .image .phone img {
-  margin-left: 1px;
-  height: 257px;
-  width: 450px;
+  margin-left: 13px;
+  max-width: 100%;
+  max-height: fit-content;
 }
 .portfolio-description .image .phone .pic img {
   margin-left: 1px;
@@ -1661,7 +1661,7 @@ code {
 .portfolio-description .image .phone .mini-p22 img {
   height: 236px;
   width: 250px;
-  margin-left: 112px;
+  margin-left: 57px;
 }
 .portfolio-description .mini-p2-mini img {
   margin-left: -2px;

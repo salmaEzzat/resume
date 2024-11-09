@@ -1537,14 +1537,14 @@ code {
 }
 @media (max-width: 972px ) {
   .portfolio-description .image img {
-    margin-left: -29px;
-    height: 472px;
-    width: 542px;
-  }
+    margin-left: 19px;
+        height: auto;
+        width: 100%;}
+
   .portfolio-description .image .mini-p2 img{
-    margin-left: 3px;
-    height: 174px;
-    width: 479px;
+    max-width: 100%;
+        margin-left: 3px;
+        height: auto;
      }
   .portfolio-details .portfolio-description h2{
     padding-left: 1px;
@@ -1575,9 +1575,9 @@ code {
   width: 378px;
 }
 .portfolio-description .image .main.ref img {
-  margin-left: 58px;
-  height: 443px;
-  width: 378px;
+  margin-left: 23px;
+  height: auto;
+  max-width: 100%;
 }
 
 .portfolio-description .image h3 {
@@ -1664,9 +1664,9 @@ code {
   margin-left: 112px;
 }
 .portfolio-description .mini-p2-mini img {
-  margin-left: 39px;
-  height: 103px;
- width: 404px;
+  margin-left: -2px;
+        height: auto;
+        width: 100%;
  }
  .portfolio-description .image .mini.mini-p2 img {
   margin-left: 1px;

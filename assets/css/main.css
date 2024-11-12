@@ -1510,7 +1510,7 @@ code {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1em;
   text-align: left;
-  white-space: pre;
+  white-space:pre-line;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -1535,6 +1535,10 @@ code {
 .portfolio-description .fit hr {
   margin-left: 180px ;
 }
+.portfolio-description .fit .center.sp img {
+  margin-left: 400px ;
+
+}
 @media (max-width: 972px ) {
   .portfolio-description .image img {
     margin-left: 19px;
@@ -1546,6 +1550,12 @@ code {
         margin-left: 3px;
         height: auto;
      }
+.portfolio-description .fit .center.sp img {
+  margin-left: 98px;
+  height: 45px;
+  width: 136px;
+  max-height: none;
+  }
   .portfolio-details .portfolio-description h2{
     padding-left: 1px;
     font-size: 22px;
@@ -1582,6 +1592,7 @@ code {
 
 .portfolio-description .image h3 {
   padding-left: 0px;
+  font-size: 19px;
 }
 
 .portfolio-description .image .mini-p22 img {
@@ -1598,6 +1609,7 @@ code {
   height: 350px;
   width: 493px;
 }
+
 .portfolio-description .background {
   margin-left: -98px;
 }
@@ -1677,7 +1689,7 @@ code {
     margin-left: -1px;
   }  
   .portfolio-description .fit img {
-    margin-left: 13px;
+    margin-left: 9px;
     max-width: 100%;
     max-height: fit-content;
     /* position: absolute; */
@@ -1743,12 +1755,24 @@ code {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
+
+.contact .container .col-me {
+  /* width: 41.66666667%; */
+  margin-left: 325px;
+  position: relative;
+  flex: none;
+}
 @media (max-width: 575px) {
   .contact .php-email-form {
     padding: 20px;
   }
+  .contact .container .col-me {
+    /* width: 41.66666667%; */
+    margin-left: 2px;
+    position: relative;
+    flex: none;
 }
-
+}
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
 .contact .php-email-form textarea {

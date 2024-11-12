@@ -368,19 +368,43 @@
               <img src="assets/img/proj2/51p.png" width="800" height="300" >
               <P>Click <b>Attach</b> to find the information that you use to mount the file system .</P>
               <img src="assets/img/proj2/52P.png" width="800" height="300" >
+              <div class="image">
+                <h3>Part 6: lunch the setup server: </h3>
+              </div>
+              <p>I will setup ec2 instance in public subnet AZ1, To install the wordpress files and configure it , In management console type <b>EC2</b> then <b>lunch instance</b>
+              <br>we will call it setup server and adjust the setting ,As shown in the pictures below </p>
+              <img src="assets/img/proj2/54.png" width="800" height="300" >
+              <br>
+              <br>
+              <img src="assets/img/proj2/5-5.png" width="800" height="300" >
+              <br>
+             <img src="assets/img/proj2/5-6.png" width="800" height="300" >
+              <br>
+              <p>Let’s open the instance summary and copy the public IP  :</p>
+              <img src="assets/img/proj2/5-7.png" width="800" height="300" >
+              <br>
+              <div class="center sp">
+              <img src="assets/img/proj2/5-8.png" width="400" height="100" >
+            </div>
+              <p>Open PuTTY or any other SSH and telnet client,In hostname section type <b>ec2-user@the public IPv4 address of ec2 instance. </b> </p>
+              <img src="assets/img/proj2/59p.png" width="600" height="300" >
+              <p>Under Connection, click the + sign under SSH ,Select the + sign under Auth. Under Auth select Credentials,Below Private key file for authentication, click Browse</p>
+              <img src="assets/img/proj2/60p.png" width="800" height="300" >
+              <p>choose the file then click <b>save</b></p>
+              <img src="assets/img/proj2/61p.png" width="800" height="300" >
+              <p>successfully, we SSH into the the setup server instance .</p>
+              <div class="image">
+                <h3>Part 7: Install WordPress </h3>
+              </div>
+              <p>we will run several commands at the instance to install wordpress files then move it EFS , but first just copy the NFS Client link at attach section EFS ,that we just created  </p>
             <div class="background">
-                <code>                      { "fileLocations": [
-                        {
-                            "URIs": [
-                                "s3://Bucket-Name/Amazon_products_global_dataset.csv"  ]
-                        } ],
-                    "globalUploadSettings": {
-                        "format": "CSV",
-                        "delimiter": ",",
-                        "textqualifier": "\"",
-                        "containsHeader": "true"
-                    }}</code> 
+                <code>                  $ yum update -y
+                  $ sudo yum -y install amazon-efs-utils
+                  $ mkdir -p /var/www/html</code>
+                  <code>$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-05485ac71c109013a.efs.us-east-1.amazonaws.com:/ /var/www/html
+                  </code> 
                 </div>
+
                 <br>
                 
               

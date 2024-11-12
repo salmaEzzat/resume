@@ -777,7 +777,7 @@ section,
 .about .content ul li {
   margin-bottom: 20px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .about .content ul strong {

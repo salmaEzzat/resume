@@ -102,15 +102,15 @@
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="assets/img/portfolio/Sheet1.jpg" alt="">
+                  <img src="assets/img/proj2/90p.png" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="assets/img/portfolio/Sheet2.jpg" alt="">
+                  <img src="assets/img/proj2/92p.jpg" alt="">
                 </div>
 
                 <div class="swiper-slide">
-                  <img src="assets/img/portfolio/sheet3.jpg" alt="">
+                  <img src="assets/img/proj2/91p - Copy.jpg" alt="">
                 </div>
 
               </div>
@@ -127,7 +127,7 @@
                   ,Certificate manager
                   ,EFS and ec2 bastion host </li>
                 <li><strong>Project date</strong>: 15 October,2024</li>
-                <li><strong>Dataset website</strong>: <a href="https://brightdata.com" target="_blank">www.brightdata.com</a></li>
+                <!-- <li><strong>Dataset website</strong>: <a href="https://brightdata.com" target="_blank">www.brightdata.com</a></li> -->
               </ul>
             </div>
           </div>
@@ -406,9 +406,67 @@
                 </div>
 
                 <br>
-                
-              
-            </div>
+                <p>let's check if our EFS is mounted correctly by write <b>df -h</b> and press enter.</p>
+                <img src="assets/img/proj2/62p.png" width="800" height="300" >
+                <p>it's mounted correctly in html directory</p>
+                <p>In next step we will instal Apache server  </p>
+                <div class="background">
+                  <code>               $ sudo yum install -y httpd httpd-tools mod_ssl
+                    $ sudo systemctl enable httpd 
+                    $ sudo systemctl start httpd
+                    </code>
+                  </div>
+                  <p>Now will install PHP version 7.4</p>
+                  <div class="background">
+                    <code>              $ sudo amazon-linux-extras enable php7.4
+                     $ sudo yum clean metadata
+                     $ sudo yum install php php-common php-pear -y
+                     $ sudo yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y
+                      </code>
+                    </div>
+                    <p>in next we will set permission for web server </p>
+                    <div class="background">
+                      <code>              $ sudo usermod -a -G apache ec2-user
+                       $ sudo chown -R ec2-user:apache /var/www
+                       $ sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
+                       $ sudo find /var/www -type f -exec sudo chmod 0664 {} \;
+                       $ chown apache:apache -R /var/www/html
+                        </code>
+                      </div>
+                      <p>then we will download the wordpress and move the file to html directory  </p>
+                      <div class="background">
+                        <code>               $ wget https://wordpress.org/latest.tar.gz
+                          $ tar -xzf latest.tar.gz
+                          $ cp -r wordpress/* /var/www/html/
+                          </code>
+                        </div>
+                        <p>Now will create wp-config.php file , then edit it to enter the information of our RDS instance</p>
+                        <div class="background">
+                          <code>               $ cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+                           $ nano /var/www/html/wp-config.php
+                            </code>
+                          </div>
+                          <br> 
+                          <p>from database in RDS copy the database name and username and password then paste it in it's in there define function , and in connectivity and security copy the Endpoint and paste under Database hostname</p>
+                  <img src="assets/img/proj2/64p.png" width="800" height="300" >
+                  <br>
+                  <br>
+                  <img src="assets/img/proj2/63p.png" width="800" height="300" >
+                  <p>to save the changes ctrl+X the y for yes then enter  </p>
+                  <p>the last command is to restart our web server </p>
+                  <div class="background">
+                    <code>               $ service httpd restart
+                      </code>
+                    </div>
+                  <p>after that open the ec2 instance dashboard then copy the Public Ipv4 , then paste in address bar for your browser.  </p>
+                  <img src="assets/img/proj2/65p.png" width="600" height="200" >
+                  <br>
+                  <p>fullfil all required data for you website then press save </p>
+                  <img src="assets/img/proj2/66p.png" width="600" height="300" >
+                  <div class="image">
+                    <h3>Part 8:Create an Application Load Balancer </h3>
+                  </div>
+                </div>
         </div>
 
       </div>

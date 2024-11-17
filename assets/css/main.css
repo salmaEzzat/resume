@@ -1527,7 +1527,7 @@ code {
 
 
 .portfolio-description .fit img {
-  margin-left: 200px;
+  margin-left: 160px;
   max-width: 100%;
   height: auto; /* Ensures the image scales proportionately */
   object-fit: cover; /* Ensures the image fits well within its container */

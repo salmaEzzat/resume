@@ -200,13 +200,15 @@
               </div>
              <div class="pic8"> <img src="assets/img/proj2/8p.png" alt=""></div>
               <p>from actions select attach to VPC</p>
-              <div class="mini-p2-mini"> 
-                <img src="assets/img/proj2/9p.png" alt="">
+            </div>
+              <div class="fit"> 
+                <img src="assets/img/proj2/9p.png" height="200" width="750">
               
               <p>select our vpc to attached it .</p>
 
-              <img src="assets/img/proj2/10p.png" alt=""></div>
-            
+              <img src="assets/img/proj2/10p.png" width="750" height="180"></div>
+               
+                <div class="image">
             <p><b>Public subnets</b> <br>Let's create first public subnets in two availability zones , and on the left side on the bar filter the vpc's based<br>  on our <b>site-vpc</b> </p>
                 <div class="mini mini-p2">
                   <img src="assets/img/proj2/11p.png" alt="">
@@ -357,9 +359,9 @@
               <img src="assets/img/proj2/53P.png" width="800" height="250" >
               <br>
               <br>
-              <img src="assets/img/proj2/46p.png" width="700" height="520" >
+              <img src="assets/img/proj2/46p.png" width="700" height="400" >
               <p>To don't have additional charging uncheck <b>Enable encryption of data at rest</b></p>
-              <img src="assets/img/proj2/47p.png" width="700" height="360" >
+              <img src="assets/img/proj2/47p.png" width="700" height="440" >
               <p>Under <b>Network</b> use the following information</p>
               <img src="assets/img/proj2/49p.png" width="800" height="440" >
               <p>for subnets choose the database private subnets, And for security group choose EFS SG ,Review the setting then click <b>Create</b></p>
@@ -376,20 +378,23 @@
               <img src="assets/img/proj2/54.png" width="800" height="300" >
               <br>
               <br>
-              <img src="assets/img/proj2/5-5.png" width="800" height="300" >
+              <img src="assets/img/proj2/5-5.png" width="600" height="300" >
               <br>
-             <img src="assets/img/proj2/5-6.png" width="800" height="300" >
+              <br>
+             <img src="assets/img/proj2/5-6.png" width="750" height="600" >
               <br>
               <p>Let’s open the instance summary and copy the public IP  :</p>
-              <img src="assets/img/proj2/5-7.png" width="800" height="300" >
+              <img src="assets/img/proj2/5-7.png" width="750" height="120" >
               <br>
               <div class="center sp">
-              <img src="assets/img/proj2/5-8.png" width="400" height="100" >
-            </div>
+              <img src="assets/img/proj2/5-8.png" width="400" height="100" ></div>
+            
               <p>Open PuTTY or any other SSH and telnet client,In hostname section type <b>ec2-user@the public IPv4 address of ec2 instance. </b> </p>
-              <img src="assets/img/proj2/59p.png" width="600" height="300" >
+              <div class="center sp">
+              <img src="assets/img/proj2/59p.png" width="350" height="400" >
+            </div>
               <p>Under Connection, click the + sign under SSH ,Select the + sign under Auth. Under Auth select Credentials,Below Private key file for authentication, click Browse</p>
-              <img src="assets/img/proj2/60p.png" width="800" height="300" >
+              <img src="assets/img/proj2/60p.png" width="700" height="180" >
               <p>choose the file then click <b>save</b></p>
               <img src="assets/img/proj2/61p.png" width="800" height="300" >
               <p>successfully, we SSH into the the setup server instance .</p>
@@ -398,10 +403,10 @@
               </div>
               <p>we will run several commands at the instance to install wordpress files then move it EFS , but first just copy the NFS Client link at attach section EFS ,that we just created  </p>
             <div class="background">
-                <code>                  $ yum update -y
-                  $ sudo yum -y install amazon-efs-utils
-                  $ mkdir -p /var/www/html</code>
-                  <code>$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-05485ac71c109013a.efs.us-east-1.amazonaws.com:/ /var/www/html
+                <code>            $ yum update -y
+            $ sudo yum -y install amazon-efs-utils
+            $ mkdir -p /var/www/html</code>
+      <code>$ sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-05485ac71c109013a.efs.us-east-1.amazonaws.com:/ /var/www/html
                   </code> 
                 </div>
 
@@ -411,39 +416,36 @@
                 <p>it's mounted correctly in html directory</p>
                 <p>In next step we will instal Apache server  </p>
                 <div class="background">
-                  <code>               $ sudo yum install -y httpd httpd-tools mod_ssl
-                    $ sudo systemctl enable httpd 
-                    $ sudo systemctl start httpd
-                    </code>
+                  <code>            $ sudo yum install -y httpd httpd-tools mod_ssl
+            $ sudo systemctl enable httpd 
+            $ sudo systemctl start httpd</code>
                   </div>
                   <p>Now will install PHP version 7.4</p>
                   <div class="background">
-                    <code>              $ sudo amazon-linux-extras enable php7.4
-                     $ sudo yum clean metadata
-                     $ sudo yum install php php-common php-pear -y
-                     $ sudo yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y
-                      </code>
+                  <code>            $ sudo amazon-linux-extras enable php7.4
+            $ sudo yum clean metadata
+            $ sudo yum install php php-common php-pear -y
+            $ sudo yum install php- <br>            {cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y</code>
                     </div>
                     <p>in next we will set permission for web server </p>
                     <div class="background">
-                      <code>              $ sudo usermod -a -G apache ec2-user
-                       $ sudo chown -R ec2-user:apache /var/www
-                       $ sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
-                       $ sudo find /var/www -type f -exec sudo chmod 0664 {} \;
-                       $ chown apache:apache -R /var/www/html
-                        </code>
+                  <code>            $ sudo usermod -a -G apache ec2-user
+            $ sudo chown -R ec2-user:apache /var/www
+            $ sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
+            $ sudo find /var/www -type f -exec sudo chmod 0664 {} \;
+            $ chown apache:apache -R /var/www/html</code>
                       </div>
                       <p>then we will download the wordpress and move the file to html directory  </p>
                       <div class="background">
-                        <code>               $ wget https://wordpress.org/latest.tar.gz
-                          $ tar -xzf latest.tar.gz
-                          $ cp -r wordpress/* /var/www/html/
+                  <code>            $ wget https://wordpress.org/latest.tar.gz
+            $ tar -xzf latest.tar.gz
+            $ cp -r wordpress/* /var/www/html/
                           </code>
                         </div>
                         <p>Now will create wp-config.php file , then edit it to enter the information of our RDS instance</p>
                         <div class="background">
-                          <code>               $ cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
-                           $ nano /var/www/html/wp-config.php
+                  <code>            $ cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+            $ nano /var/www/html/wp-config.php
                             </code>
                           </div>
                           <br> 
@@ -451,21 +453,87 @@
                   <img src="assets/img/proj2/64p.png" width="800" height="300" >
                   <br>
                   <br>
-                  <img src="assets/img/proj2/63p.png" width="800" height="300" >
+                  <img src="assets/img/proj2/63p.png" width="800" height="400" >
                   <p>to save the changes ctrl+X the y for yes then enter  </p>
                   <p>the last command is to restart our web server </p>
                   <div class="background">
-                    <code>               $ service httpd restart
-                      </code>
+                    <code>               $ service httpd restart</code>
                     </div>
                   <p>after that open the ec2 instance dashboard then copy the Public Ipv4 , then paste in address bar for your browser.  </p>
-                  <img src="assets/img/proj2/65p.png" width="600" height="200" >
+                  <img src="assets/img/proj2/65p.png" width="600" height="400" >
                   <br>
                   <p>fullfil all required data for you website then press save </p>
                   <img src="assets/img/proj2/66p.png" width="600" height="300" >
+                  <p>let's open admin page using the credentials that we just created</p>
+                  <img src="assets/img/proj2/80p.png" width="600" height="300" >
+                  <br>
+
                   <div class="image">
                     <h3>Part 8:Create an Application Load Balancer </h3>
                   </div>
+                  <p>Before creating ALB first we will lunch two instances in private app subnets, the same steps as previous instance <br> ,use Webserver Security Group ,and use User data
+                  it's run this command when instance being online ,those commands is the same that we use before to install apache ,php and sql servers   </p>
+                  <div class="background">
+                    <code>  #!/bin/bash
+  yum update -y
+  sudo yum install -y httpd httpd-tools mod_ssl
+  sudo systemctl enable httpd 
+  sudo systemctl start httpd
+  sudo amazon-linux-extras enable php7.4
+  sudo yum clean metadata
+  sudo yum install php php-common php-pear -y
+  sudo yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y
+  sudo rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+  sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+  sudo yum install mysql-community-server -y
+  sudo systemctl enable mysqld
+  sudo systemctl start mysqld
+  echo "fs-05485ac71c109013a.efs.us-east-1.amazonaws.com:/ /var/www/html nfs4<br>  nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
+  mount -a
+  chown apache:apache -R /var/www/html
+  sudo service httpd restart </code>
+                    </div>
+                    <p>Let’s create a target group then we will put these instances in the target group to allow the ALB to route traffic to them</p>
+                   <div class="center"> <img src="assets/img/proj2/67p.png" width="200" height="200" >
+                  </div>
+                  <br>
+                    <p>choose target group ,enter the information below then click <b>Next</b></p>
+                    
+                    <img src="assets/img/proj2/68p.png" width="600" height="500" >
+                    <P>On this page, we will select the instances we want the ALB to route traffic to. Choose Webserver AZ1 and Webserver AZ2 then click <b> Include as pending below</b> then click <b>create target group</b>
+                    </P>
+                    <img src="assets/img/proj2/69p.png" width="600" height="300" >
+                    <p>At the left side select Load Balancers then Create load balancer</p>
+                    <img src="assets/img/proj2/70p.png" width="600" height="500" >
+                    <p>Enter the information as shown in picture below :</p>
+                    <img src="assets/img/proj2/71p.png" width="600" height="300" >
+                    <p>select <b>ALB security group </b></p>
+                    <img src="assets/img/proj2/72p.png" width="600" height="200" >
+                    <p>In the ALB information copy the link ,Because we will use it to access our website </p>
+                    <img src="assets/img/proj2/73p.png" width="600" height="300" >
+                    <img src="assets/img/proj2/74p.png" width="600" height="300" >
+                    <P>Anytime you change your domain address, you have to go to your wordpress settings and change your domain <br> address there as well then press <b>save</b>.</P> 
+                    <img src="assets/img/proj2/75p.png" width="700" height="400" >
+                    <div class="image">
+                      <h3>Part 9:Launch Bastion Host </h3>
+                    </div>
+                      <p>Deploy an EC2 Instance in the Public Subnet:
+                        <li>This instance will serve as your bastion host or jump box.</li>
+                        <li>Ensure its security group is configured to permit inbound SSH connections (port 22) from your IP.</li></p>
+                      <p>Lunch a new instance in public subnet AZ1 and call it bastion host use SSH security group</p>
+                      <img src="assets/img/proj2/76p.png" width="650" height="159" >
+                      <P>Now that we've launched our EC2 instance in the public subnet, we'll proceed to download <b> Pageant</b> on our computer.</P>
+                      <img src="assets/img/proj2/77p.png" width="650" height="152" >
+                      <p>You will see the icon at the bottom right part of the taskbar.</p>
+                      <div class="new">
+                      <img src="assets/img/proj2/78p.png" width="251" height="101" >
+                      <p>Launch Pageant. We'll load the key pair that we used for SSH access to our EC2 instance into Pageant. Select <b>Add Key</b></p>
+                      <img src="assets/img/proj2/79p.png" width="500" height="300" >
+                      <p>Go to the ec2 instance dashboard then copy the bastion host public ipv4, then go to the putty and paste it after ec2@ </p>
+                      <img src="assets/img/proj2/79.1p.png" width="360" height="320" >
+                     
+                     </div>
+
                 </div>
         </div>
 

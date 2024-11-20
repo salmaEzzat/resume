@@ -1510,7 +1510,7 @@ code {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 1em;
   text-align: left;
-  white-space:pre-line;
+  white-space: break-spaces;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
@@ -1522,22 +1522,31 @@ code {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-
 }
 
 
 .portfolio-description .fit img {
-  margin-left: 160px;
-  max-width: 100%;
-  height: auto; /* Ensures the image scales proportionately */
-  object-fit: cover; /* Ensures the image fits well within its container */
+  margin-left: 183px;
+  padding-left: 2;
+  max-width: 102%;
+  /* height: auto; */ /* Ensures the image scales proportionately */
+  object-fit: ;
+  object-position: 51% 50%; /* Ensures the image fits well within its container */
 }
 .portfolio-description .fit hr {
   margin-left: 180px ;
 }
 .portfolio-description .fit .center.sp img {
-  margin-left: 400px ;
+  margin-left: 113px ;
 
+}
+.portfolio-description .fit .center {
+  margin-left: 271px;
+}
+.portfolio-description .fit .new img {
+  display: block ;
+  text-align: center
+  ;margin: 0 auto;
 }
 @media (max-width: 972px ) {
   .portfolio-description .image img {
@@ -1611,7 +1620,7 @@ code {
 }
 
 .portfolio-description .background {
-  margin-left: -98px;
+  margin-left: -90px;
 }
 code {
   font-size: 10px;

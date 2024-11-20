@@ -155,17 +155,17 @@
                 <br>   
                 <p>We will use JSON manifest files to specify files in Amazon S3 to import into Amazon QuickSight , and that file will contain the following code </p>
                 <div class="background">
-                <code>                      { "fileLocations": [
-                        {
-                            "URIs": [
-                                "s3://Bucket-Name/Amazon_products_global_dataset.csv"  ]
-                        } ],
-                    "globalUploadSettings": {
-                        "format": "CSV",
-                        "delimiter": ",",
-                        "textqualifier": "\"",
-                        "containsHeader": "true"
-                    }}</code> 
+                <code>               { "fileLocations": [
+                  {
+                      "URIs": [
+                          "s3://Bucket-Name/Amazon_products_global_dataset.csv"  ]
+                  } ],
+              "globalUploadSettings": {
+                  "format": "CSV",
+                  "delimiter": ",",
+                  "textqualifier": "\"",
+                  "containsHeader": "true"
+              }}</code> 
                 </div>
                 <br>
                 <h3>part 2:Create S3 bucket and upload it with data  </h3>
@@ -174,8 +174,7 @@
                 <p>Keep the other setting as it and click create a bucket button <br> Now in json file we have to change the Bucket-name to our new bucket name "amazon-products-global"</p> 
                 <div class="background">
                 <code>               "URIs": [
-                      "s3://amazon-products-global/Amazon_products_global_dataset.csv" 
-                      ]</code>
+              "s3://amazon-products-global/Amazon_products_global_dataset.csv"  ]</code>
                 </div>
                 <P>In S3 , Open the amazon-products-global bucket and upload the dataset and mainfest.json file </P>
                 <div class="mini-p2">
@@ -233,7 +232,7 @@
                   <p>And choose focus only on  zatarains’s creol mustard and choose from filed the initial price</p>
                   <img src="assets/img/portfolio/18.png" alt="">
                   <p>The graph illustrate the difference on prices between the two sellers of the products</p>
-                  <>
+                  
                   <p>In sheet3 , we can know the most popular categories for the last month. </p>
                   <img src="assets/img/portfolio/19.png" alt="">
                   <h3>Quicksight and S3 pricing :</h3>

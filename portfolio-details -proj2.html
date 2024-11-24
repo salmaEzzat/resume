@@ -531,8 +531,36 @@
                       <img src="assets/img/proj2/79p.png" width="500" height="300" >
                       <p>Go to the ec2 instance dashboard then copy the bastion host public ipv4, then go to the putty and paste it after ec2@ </p>
                       <img src="assets/img/proj2/79.1p.png" width="360" height="320" >
-                     
-                     </div>
+                      <p>At the left side choose SSH then Auth check Allow agent forwarding then <b>Ok</b>.</p>
+                      <img src="assets/img/proj2/79.2p.png" width="360" height="320" >
+                    </div>
+                      <p>It will open the bastion host instance type ssh ec2-user@ followed by the Private IPv4 address of your Webserver AZ1</p>
+                      <img src="assets/img/proj2/79.3p.png" width="600" height="400" > 
+                      <p>we successfully access to the instance in the private subnet .</p>                   
+                      <div class="image">
+                        <h3>Part 10: Create an Auto Scaling Group </h3>
+                      </div>
+                      <p>We are going to set up an auto-scaling group to automatically create and manage web servers in the private <br> application subnet.</p>
+                      <img src="assets/img/proj2/79.4p.png" width="600" height="68" >
+                      <p>First, we need to terminate the EC2 instances that were created manually. Navigate to the "Instances" section <br>within the EC2 Dashboard. Select both instances named Webserver AZ1 and Webserver AZ2, click "Instance State,"  <br>and choose "Terminate." These instances will start terminating.</p>
+                      <img src="assets/img/proj2/79.5p.png" width="680" height="340" >
+                      <p>Next, we need to create our Launch Templates. These templates will include the configuration details for the EC2<br>instances that the auto-scaling group will use to launch new instances,I have created one before so i gust choose it</p>
+                      <img src="assets/img/proj2/79.6p.png" width="650" height="370" >
+                      <p>choose our vpc and private subnets .</p>
+                      <img src="assets/img/proj2/79.7p.png" width="650" height="440" >
+                      <p>For the Load Balancing section, we'll link our auto scaling group to the Application Load Balancer (ALB) <br>that we set up earlier.
+
+                        Under Load Balancing, make the following selections:
+                        <li>Attach to an Existing Load Balancer: Select this option to connect your auto scaling group to <br> a pre-existing load balancer.</li>
+                        <li>Choose from Your Load Balancer Target Groups: From the available list, pick your existing load <br>balancer target group.</li></p>
+                      <img src="assets/img/proj2/79.8p.png" width="650" height="450" >
+                      <br>
+                      <p>We want our auto scaling group to maintain two EC2 instances and the ASG can scale down to a minimum 1 <br>instance or a maximum of 4 instances, click Next ,use another words in previous sentences
+                        Let's configure our <br>auto scaling group to maintain a steady state of two EC2 instances. The auto scaling group will have  the flexibility <br> to scale down to as few as one instance or up to a maximum of four instances. Once these settings are in place, <br> proceed by clicking <b> "Next."</b></p>
+                      
+                      <img src="assets/img/proj2/79.9.png" width="650" height="550" >
+                      <img src="assets/img/proj2/79.99p.png" width="650" height="200" >
+                      
 
                 </div>
         </div>

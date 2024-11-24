@@ -171,15 +171,15 @@
                 <h3>part1 :Build the underlying network architecture</h3>
                 <p>In the management console,choose the region where you want to create your VPC for us , we will select us-east-1(N-virginia)</p>
                <div class="mini-p2">
-                <img src="assets/img/proj2/1p.png" alt="">  
+                <img src="assets/img/proj2/1p.png" alt="" style="display: block ; text-align: center; margin: 0 auto;">  
                 <br>  
                 <p>Navigate to amazon VPC<a href="https://console.aws.amazon.com/vpc/"> https://console.aws.amazon.com/vpc/</a></p>
                 <br>
-                <img src="assets/img/proj2/2p.png" alt=""> 
+                <img src="assets/img/proj2/2p.png" alt="" style="display: block ; text-align: center; margin: 0 auto;"> 
                 <br>
                 <p> At VPC section ,press<b> create VPC</b> </p>
                 <br>
-                <img src="assets/img/proj2/3p.png" alt=""></div>
+                <img src="assets/img/proj2/3p.png" alt="" style="display: block ; text-align: center; margin: 0 auto;"></div>
                 <br>
                 <p>we will name it as site-vpc ,And  enter 10.0.0.0/16 in the IPv4 CIDR block ,Also we will leave the tenancy to default</p>
                 
@@ -208,15 +208,22 @@
 
               <img src="assets/img/proj2/10p.png" width="750" height="180"></div>
                
-                <div class="image">
+                
             <p><b>Public subnets</b> <br>Let's create first public subnets in two availability zones , and on the left side on the bar filter the vpc's based<br>  on our <b>site-vpc</b> </p>
-                <div class="mini mini-p2">
-                  <img src="assets/img/proj2/11p.png" alt="">
-                </div>
-               <div class="low-weidth">
-                <img src="assets/img/proj2/12p.png" alt="">
+                <div class="fit">
+                  <div class="new">
+                    <div class="ola">
+                  <img src="assets/img/proj2/11p.png" height="200" width="700">
+              
+                <br>
+                <img src="assets/img/proj2/12p.png" height="250" width="600">
+              </div>
               </div> 
+                </div>
+             
+             
               <p>Let’s give our subnet a name. Based on our reference architecture, we will call it Public-az1 and put this in <br>the us-east-1a Availability Zone,The CIDR block should be 10.0.0.0/24 and click Create subnet</p>
+              <div class="image">
               <div class="bb">
 
               <img src="assets/img/proj2/13p.png" alt="">
@@ -273,7 +280,7 @@
               <h3>Part 3: Create Security Groups</h3></div>
               <p>there are six security groups we will need in these project :</p>
               <div class="listed">
-              <ul>
+              
                 <li>ALB Security Group</li>
                 <li>SSH Security Group</li>
                 <li>Webserver Security Group</li>
@@ -281,7 +288,7 @@
                 <li>EFS Security Group</li>
                 <li>NFS Security Group</li>
 
-              </ul></div>
+              </div>
               <p>At the left hand side click security groups,Click create security group</p>
               <img src="assets/img/proj2/32p.png" width="700" height="60" >
               <br>
@@ -298,9 +305,9 @@
               <br>
               <br>
               <div class="listed">
-              <ul> 
+               
                 <li>Port: 80 and 443 with Source: ALB Security Group</li>
-               <li>Port: 22 with Source: SSH Security Group</li></ul>
+               <li>Port: 22 with Source: SSH Security Group</li>
               </div>
               <p>4. Database security group :</p>
               <img src="assets/img/proj2/36p.png" width="800" height="400" >
@@ -309,10 +316,10 @@
               <p>5. EFS security group :</p>
               <img src="assets/img/proj2/37p.png" width="800" height="250" >
               <div class="listed">
-                <ul> 
+              
                   <li>Port: 2049 Source: Webserver Security Group,NFS security group</li>
                  <li>Port: 22 Source: SSH Security Group</li>
-                </ul>
+                
               </div>
               <p>6. NFS security group :</p>
               <img src="assets/img/proj2/38p.png" width="800" height="125" >
@@ -473,7 +480,9 @@
                   </div>
                   <p>Before creating ALB first we will lunch two instances in private app subnets, the same steps as previous instance <br> ,use Webserver Security Group ,and use User data
                   it's run this command when instance being online ,those commands is the same that we use before to install apache ,php and sql servers   </p>
+                  <div class="special">
                   <div class="background">
+                    
                     <code>  #!/bin/bash
   yum update -y
   sudo yum install -y httpd httpd-tools mod_ssl
@@ -492,7 +501,7 @@
   mount -a
   chown apache:apache -R /var/www/html
   sudo service httpd restart </code>
-                    </div>
+                    </div></div>
                     <p>Let’s create a target group then we will put these instances in the target group to allow the ALB to route traffic to them</p>
                    <div class="center"> <img src="assets/img/proj2/67p.png" width="200" height="200" >
                   </div>
@@ -559,8 +568,9 @@
                         Let's configure our <br>auto scaling group to maintain a steady state of two EC2 instances. The auto scaling group will have  the flexibility <br> to scale down to as few as one instance or up to a maximum of four instances. Once these settings are in place, <br> proceed by clicking <b> "Next."</b></p>
                       
                       <img src="assets/img/proj2/79.9.png" width="650" height="550" >
+                      <p>You should see two instances running, which were launched by the Auto Scaling Group (ASG). These instances <br>can be identified by the tag names we assigned to them (ASG-Webserver). Let's wait for them to pass the Status check.</p>
                       <img src="assets/img/proj2/79.99p.png" width="650" height="200" >
-                      
+                      <p>Next, let's verify that the Health status of the Registered targets is healthy. You can do this by navigating <br>to Target Groups under the Load Balancing section</p>
 
                 </div>
         </div>

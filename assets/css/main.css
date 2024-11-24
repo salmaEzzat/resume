@@ -1479,8 +1479,10 @@ section,
   width: 425px;
 }
 .portfolio-description .image .center p {
+  display: block ;
   text-align: center;
-  padding-left: 20px;
+  margin: 0 auto;
+}
 
 }
 .portfolio-description .listed li {
@@ -1523,7 +1525,9 @@ code {
   -ms-hyphens: none;
   hyphens: none;
 }
-
+.portfolio-description .fit .new .ola img {
+  margin-left: 210px;
+}
 
 .portfolio-description .fit img {
   margin-left: 183px;
@@ -1540,13 +1544,16 @@ code {
   margin-left: 113px ;
 
 }
-.portfolio-description .fit .center {
-  margin-left: 271px;
+.portfolio-description .fit .center  {
+  margin-left: -128px;
+  display: block;
+    text-align: center;
+    /* margin: 0 auto; */
 }
 .portfolio-description .fit .new img {
   display: block ;
-  text-align: center
-  ;margin: 0 auto;
+  text-align: center;
+  margin: 0 auto;
 }
 @media (max-width: 972px ) {
   .portfolio-description .image img {
@@ -1603,6 +1610,9 @@ code {
   padding-left: 0px;
   font-size: 19px;
 }
+.portfolio-description .fit .center {
+  margin-left: 9px;
+}
 
 .portfolio-description .image .mini-p22 img {
   margin-left: 40px;
@@ -1618,7 +1628,9 @@ code {
   height: 350px;
   width: 493px;
 }
-
+.portfolio-description .fit .special .background {
+  margin-left: -29px;
+}
 .portfolio-description .background {
   margin-left: -90px;
 }
@@ -1628,6 +1640,9 @@ code {
 .portfolio-description .image li {
   padding-left: 0px;
   font-size: 11px;
+}
+.portfolio-description .fit .new .ola img {
+  margin-left: 0px;
 }
 .portfolio-description .image .phone .mini img {
   margin-left: 24px;
@@ -1703,6 +1718,7 @@ code {
     max-height: fit-content;
     /* position: absolute; */
   };
+  
   
  }
 
